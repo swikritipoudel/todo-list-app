@@ -1,0 +1,25 @@
+// deletetask.addEventListener("click",()=>{
+        //     let checkboxes = document.querySelectorAll(".task-checkbox");
+        //     checkboxes.forEach(checkbox => {
+        //         if (checkbox.checked) {
+        //             checkbox.parentElement.remove(); 
+        //         }
+        //     });
+        // })
+        
+
+        <!-- // addtask.addEventListener("click",()=>{
+    //      let tasks = task.value
+    //      if (tasks===""){
+    //         alert("Please enter task")
+    //         return
+    //      }
+    //      let li = document.createElement("li")
+    //      li.textContent = tasks
+    //      tasklist.appendChild(li)
+    //      task.value=""
+    // })
+
+    // deletetask.addEventListener("click",()=>{
+    //     tasklist.removeChild(tasklist.lastChild)
+    // }) -->
