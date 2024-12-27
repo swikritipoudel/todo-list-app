@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +10,15 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
-        } 
+        }
+
+        .done label {
+            text-decoration: line-through;
+            color: gray;
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1 class="cap">To-Do List</h1>
@@ -20,56 +27,68 @@
         <div class="tasklist"></div>
     </div>
 </body>
-    <script>
-        let task = document.querySelector(".task")
-        let addtask = document.querySelector(".addtask")
-        let tasklist = document.querySelector(".tasklist")
-        
-        addtask.addEventListener("click",()=>{
-             let tasks = task.value
-             if (tasks===""){
-                alert("Please enter task")
-                return
-             }
-             
-             let checkbox = document.createElement("input");
-            checkbox.type = "checkbox";
-            checkbox.classList.add("task-checkbox");
+<script>
+    let task = document.querySelector(".task")
+    let addtask = document.querySelector(".addtask")
+    let tasklist = document.querySelector(".tasklist")
 
-            let label = document.createElement("label");
-            label.textContent = tasks;
-
-            let taskContainer=document.createElement("div")
-            taskContainer.classList.add("task-containter")
+    function addTodo() {
+        let tasks = task.value
+        if (tasks === "") {
+            alert("Please enter task");
+            return;
+        }
+    
 
 
-            
-            let deleteButton = document.createElement("button");
-            deleteButton.textContent = "Delete";
-            deleteButton.classList.add("delete-btn");
-            
-            deleteButton.addEventListener("click", () => {
-                taskContainer.remove()
-            });
-            
-            label.appendChild(checkbox)
-            taskContainer.appendChild(label);
-            taskContainer.appendChild(deleteButton);
-            tasklist.appendChild(taskContainer);
 
-            task.value=""
+        let checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.classList.add("task-checkbox");
+
+        let label = document.createElement("label");
+        label.textContent = tasks;
+
+        let taskContainer = document.createElement("div")
+        taskContainer.classList.add("task-container")
 
 
+
+        let deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.classList.add("delete-btn");
+
+        deleteButton.addEventListener("click", () => {
+            taskContainer.remove()
+        });
+
+        checkbox.addEventListener("change", () => {
+            if (checkbox.checked) {
+                taskContainer.classList.add("done")
+            }
+            else {
+                taskContainer.classList.remove("done")
+            }
         })
 
-        </script>
+        label.appendChild(checkbox)
+        taskContainer.appendChild(label);
+        taskContainer.appendChild(deleteButton);
+        tasklist.appendChild(taskContainer);
+
+        task.value = ""
+    }
+
+
+
+    addtask.addEventListener("click", addTodo)
+
+    task.addEventListener("keydown",(event)=>{
+        if (event.key === "Enter"){
+            addTodo();
+        }
+    })
+
+</script>
+
 </html>
-
-
-
-
-
-
-
-
-
