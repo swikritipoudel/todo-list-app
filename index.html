@@ -5,90 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        .tasklist {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .done label {
-            text-decoration: line-through;
-            color: gray;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="container">
         <h1 class="cap">To-Do List</h1>
-        <input type="text" class="task">
-        <button class="addtask">Add Task</button>
+        <div class="list">
+        <input type="text" class="task" placeholder="Enter a task">
+        <button class="addtask btn">Add Task</button>
+        <button class="delete-btn btn">Delete Marked Tasks</button>
+    </div>
         <div class="tasklist"></div>
     </div>
 </body>
-<script>
-    let task = document.querySelector(".task")
-    let addtask = document.querySelector(".addtask")
-    let tasklist = document.querySelector(".tasklist")
-
-    function addTodo() {
-        let tasks = task.value
-        if (tasks === "") {
-            alert("Please enter task");
-            return;
-        }
-    
-
-
-
-        let checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        checkbox.classList.add("task-checkbox");
-
-        let label = document.createElement("label");
-        label.textContent = tasks;
-
-        let taskContainer = document.createElement("div")
-        taskContainer.classList.add("task-container")
-
-
-
-        let deleteButton = document.createElement("button");
-        deleteButton.textContent = "Delete";
-        deleteButton.classList.add("delete-btn");
-
-        deleteButton.addEventListener("click", () => {
-            taskContainer.remove()
-        });
-
-        checkbox.addEventListener("change", () => {
-            if (checkbox.checked) {
-                taskContainer.classList.add("done")
-            }
-            else {
-                taskContainer.classList.remove("done")
-            }
-        })
-
-        label.appendChild(checkbox)
-        taskContainer.appendChild(label);
-        taskContainer.appendChild(deleteButton);
-        tasklist.appendChild(taskContainer);
-
-        task.value = ""
-    }
-
-
-
-    addtask.addEventListener("click", addTodo)
-
-    task.addEventListener("keydown",(event)=>{
-        if (event.key === "Enter"){
-            addTodo();
-        }
-    })
-
-</script>
-
+    <script src="script.js"></script>
 </html>
