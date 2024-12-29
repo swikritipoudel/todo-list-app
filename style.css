@@ -38,7 +38,8 @@ body{
 
 
 input.task{
-    padding: 10px;
+    max-width: 90%;
+    padding: 10px 0;
     text-align: center;
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.5);
